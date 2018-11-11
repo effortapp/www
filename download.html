@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:article="http://ogp.me/ns/article" itemscope itemtype="https://schema.org/WebPage">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="canonical" href="https://www.effortapp.com/">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link href="assets/css/screen.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/effort-144.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <meta name="author" content="Matthias Mullie">
+    <link rel="author" href="Matthias Mullie">
+
+    <meta property="og:site_name" content="Effort">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@effortapp">
+
+    <title>Effort &middot; Personal trainer in your pocket</title>
+    <meta property="og:title" content="Effort">
+    <meta name="twitter:title" content="Effort">
+
+    <meta name="description" content="Personal trainer in your pocket">
+    <meta property="og:description" content="Personal trainer in your pocket">
+    <meta name="twitter:description" content="Personal trainer in your pocket">
+
+    <link rel="canonical" href="https://www.effortapp.com/">
+    <meta property="og:url" content="https://www.effortapp.com/">
+    <meta property="twitter:url" content="https://www.effortapp.com/">
+
+    <meta property="og:image" content="https://www.effortapp.com/assets/images/logo.png">
+    <meta name="twitter:image" content="https://www.effortapp.com/assets/images/logo.png">
+    <link rel="image_src" href="https://www.effortapp.com/assets/images/logo.png">
+
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <iframe src="index.html" frameborder="0" style="width: 100vw; height: 100vh;"></iframe>
+
+    <div id="beta">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        <strong>Effort</strong> is in beta
+                    </h1>
+
+                    <p>
+                        <strong>Effort</strong> will be available soon, but is currently undergoing rigorous private testing.
+                    </p>
+
+                    <p>
+                        If you would like to help test the app, or would like to be notified upon release, fill out your details below and we'll get in touch!
+                    </p>
+                </div>
+            </div>
+
+            <div id="submitsuccess" class="row" style="display: none">
+                <div class="col-sm-12">
+                    <p>
+                        <strong>Thanks for your interest</strong>, we'll be in touch!
+                    </p>
+                </div>
+            </div>
+
+            <div id="submiterror" class="row" style="display: none">
+                <div class="col-sm-12">
+                    <p>
+                        <strong>Something went wrong...</strong> Please try again!
+                    </p>
+                </div>
+            </div>
+
+            <form action="#" method="post" class="row">
+                <div class="col-md-1 col-sm-4">
+                    <label for="name">Name</label>
+                </div>
+
+                <div class="col-md-4 col-sm-8">
+                    <input type="text" name="name" id="name" placeholder="Your name" />
+                </div>
+
+                <div class="col-md-1 col-sm-4">
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="col-md-4 col-sm-8">
+                    <input type="text" name="email" id="email" placeholder="your@email.com" />
+                </div>
+
+                <div class="col-md-2 col-sm-12">
+                    <input type="hidden" name="message" value="Keep me posted on Effort" />
+                    <input type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var action = 'https://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd',
+            $form = $('#beta form');
+
+        $form.submit(function () {
+            // hide form & success/error messages while submitting
+            $('#submitsuccess, #submiterror').slideUp();
+            $form.slideUp();
+
+            // submit form
+            $.post(action, $form.serialize())
+                .then(
+                    // success
+                    null,
+                    // failure
+                    function(e) {
+                        if (e.status === 0) {
+                            // this is an expected error: the simpleform redirect will cause CORS conflicts...
+                            // turn this one into a success...
+                            return $.Deferred().resolve().promise();
+                        }
+                        return e;
+                    }
+                )
+                .then(
+                    function() {
+                        // show success message
+                        $('#submitsuccess').slideDown();
+                    },
+                    function() {
+                        // display form again and show error message
+                        $form.slideDown();
+                        $('#submiterror').slideDown();
+                    }
+                );
+
+            return false;
+        });
+    </script></body>
+</html>
