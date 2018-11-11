@@ -5,7 +5,7 @@ body {
     font-size: 16px;
     color: #444;
     background: linear-gradient(#d8e0ec, #fff) no-repeat;
-    background-size: auto 1000px;
+    background-size: 100% 1000px;
 }
 
 h1 {
@@ -32,24 +32,30 @@ h1 {
 }
 
 .row {
-    padding: 170px 0 80px;
+    padding: 20px 0;
 }
 
-header .row,
-footer .row,
-#beta .row {
-    padding: 25px 0;
-}
+@media (min-width: 768px) {
+    .row {
+        padding: 170px 0 80px;
+    }
 
-#intro-row .row {
-    padding-top: 50px;
-}
+    header .row,
+    footer .row,
+    #beta .row {
+        padding: 25px 0;
+    }
 
-.screenshot {
-    position: absolute;
-    bottom: -150px;
-    padding: 0 50px;
-    width: 100%;
+    #intro-row .row {
+        padding-top: 50px;
+    }
+
+    .screenshot {
+        position: absolute;
+        bottom: -150px;
+        padding: 0 50px;
+        width: 100%;
+    }
 }
 
 #intro-row .screenshot:first-of-type {
