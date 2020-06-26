@@ -60,73 +60,82 @@
 
     <meta property="og:type" content="website">
 </head>
-<body id="download">
-<iframe src="index.html" frameborder="0" style="width: 100vw; height: 100vh;"></iframe>
-
-<div id="beta">
+<body id="contact">
+<header>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1>
-                    <strong>Effort</strong> is in beta
-                </h1>
-
-                <p>
-                    <strong>Effort</strong> will be available soon, but is currently undergoing rigorous private
-                    testing.
-                </p>
-
-                <p>
-                    If you would like to help test the app, or would like to be notified upon release, fill out your
-                    details below and we'll get in touch!
-                </p>
+                <a href="index.html">
+                    <img src="assets/images/logo.png" id="logo" alt=""/>
+                </a>
             </div>
         </div>
+    </div>
+</header>
 
-        <div id="submitsuccess" class="row" style="display: none">
-            <div class="col-sm-12">
-                <p>
-                    <strong>Thanks for your interest</strong>, we'll be in touch!
-                </p>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1>Contact</h1>
+
+                <div id="submitsuccess" class="row" style="display: none">
+                    <div class="col-sm-12">
+                        <p>
+                            <strong>Thanks for your message</strong>, we'll be in touch!
+                        </p>
+                    </div>
+                </div>
+
+                <div id="submiterror" class="row" style="display: none">
+                    <div class="col-sm-12">
+                        <p>
+                            <strong>Something went wrong...</strong> Please try again!
+                        </p>
+                    </div>
+                </div>
+
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <h3>
+                                <label for="name">Name</label>
+                            </h3>
+                            <input type="text" name="name" id="name" placeholder="Your name" />
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <h3>
+                                <label for="name">Email</label>
+                            </h3>
+                            <input type="text" name="email" id="email" placeholder="your@email.com" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>
+                                <label for="message">Message</label>
+                            </h3>
+
+                            <textarea name="message" id="message" rows="6"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12">
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div id="submiterror" class="row" style="display: none">
-            <div class="col-sm-12">
-                <p>
-                    <strong>Something went wrong...</strong> Please try again!
-                </p>
-            </div>
-        </div>
-
-        <form action="#" method="post" class="row">
-            <div class="col-md-1 col-sm-4">
-                <label for="name"><strong>Name</strong></label>
-            </div>
-
-            <div class="col-md-4 col-sm-8">
-                <input type="text" name="name" id="name" placeholder="Your name"/>
-            </div>
-
-            <div class="col-md-1 col-sm-4">
-                <label for="email"><strong>Email</strong></label>
-            </div>
-
-            <div class="col-md-4 col-sm-8">
-                <input type="text" name="email" id="email" placeholder="your@email.com"/>
-            </div>
-
-            <div class="col-md-2 col-sm-12">
-                <input type="hidden" name="message" value="Keep me posted on Effort"/>
-                <input type="submit" value="Submit"/>
-            </div>
-        </form>
     </div>
 </div>
 
 <script>
     var action = 'https://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd',
-        $form = $('#beta form');
+        $form = $('#contact form');
 
     $form.submit(function () {
         // hide form & success/error messages while submitting
@@ -163,5 +172,20 @@
         return false;
     });
 </script>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 links">
+                <a href="download.html" class="download">Download</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy policy</a>
+            </div>
+            <div class="col-md-3 col-sm-12 copyright">
+                © Effort 2020
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
